@@ -45,9 +45,6 @@ class KtorServerManager(private val api: MontoyaApi) : ServerManager {
                     install(CORS) {
                         allowHost("localhost:${config.port}")
                         allowHost("127.0.0.1:${config.port}")
-                        allowHost("10.39.77.5:${config.port}")
-                        allowHost("10.39.77.6:${config.port}")
-                        allowHost("10.39.77.10:${config.port}")
 
                         allowMethod(HttpMethod.Get)
                         allowMethod(HttpMethod.Post)
@@ -143,7 +140,7 @@ class KtorServerManager(private val api: MontoyaApi) : ServerManager {
             val url = URI(origin).toURL()
             val hostname = url.host.lowercase()
 
-            val allowedHosts = setOf("localhost", "127.0.0.1")
+            val allowedHosts = setOf("localhost", "127.0.0.1", "10.39.77.5", "10.39.77.6", "10.39.77.10")
 
             return hostname in allowedHosts
         } catch (_: Exception) {
@@ -168,7 +165,7 @@ class KtorServerManager(private val api: MontoyaApi) : ServerManager {
             val hostname = parts[0].lowercase()
             val port = if (parts.size > 1) parts[1].toIntOrNull() else null
 
-            val allowedHosts = setOf("localhost", "127.0.0.1")
+            val allowedHosts = setOf("localhost", "127.0.0.1", "10.39.77.5", "10.39.77.6", "10.39.77.10")
             if (hostname !in allowedHosts) {
                 return false
             }
@@ -188,7 +185,7 @@ class KtorServerManager(private val api: MontoyaApi) : ServerManager {
             val url = URI(referer).toURL()
             val hostname = url.host.lowercase()
 
-            val allowedHosts = setOf("localhost", "127.0.0.1")
+            val allowedHosts = setOf("localhost", "127.0.0.1", "10.39.77.5", "10.39.77.6", "10.39.77.10")
             return hostname in allowedHosts
 
         } catch (_: Exception) {
