@@ -45,6 +45,9 @@ class KtorServerManager(private val api: MontoyaApi) : ServerManager {
                     install(CORS) {
                         allowHost("localhost:${config.port}")
                         allowHost("127.0.0.1:${config.port}")
+                        allowHost("10.39.77.5:${config.port}")
+                        allowHost("10.39.77.6:${config.port}")
+                        allowHost("10.39.77.10:${config.port}")
 
                         allowMethod(HttpMethod.Get)
                         allowMethod(HttpMethod.Post)
